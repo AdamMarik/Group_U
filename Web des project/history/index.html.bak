@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> Balbriggan Chess Club </title>
+		<!--Links to css, google font and Bootstrap-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<!--my stylesheet-->
+		<link rel="stylesheet" href="../css/Style_A.css">
+		<!--google fonts-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@500&display=swap" rel="stylesheet">
+		<!--w3choolslink-->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://kit.fontawesome.com/845f246126.js" crossorigin="anonymous"></script>
+		<!--metas-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!--coded by Adam Marik-->
+		<!--JavaScript-->
+		<!--script for validation-->
+		<script> 
+		
+			function validate(){
+				var formData = []; //array ot hold data from form fieldset
+				//assigning name to index 0
+				formData[0] = document.getElementById("nameData").value;
+				//.value is used when getting data from an input tag
+				//assigningthe email to index 1
+				formData[1] = document.getElementById("emailData").value;
+				
+				if(formData[0].length <2){
+					document.getElementById("feedback").innerHTML = "not a valid name";
+				}
+
+				//check the email
+				var symbol = formData[1].indexOf('@');
+				//get index of the . and if >0 that means its present
+				//if not there give feedback
+				if(symbol < 1){
+					document.getElementById("emailFeedback").innerHTML = "Not Valid";
+					
+					
+						
+				}
+			}
+			
+			
+				
+				//for loop to validate each radio and see if one is selected
+				
+			function validateInput(){
+				var valid = false;
+				var x = document.myform.chessMaster;
+
+				for(var i = 0;i < x.length; i++){
+				if(x[i].checked){
+					valid = true;
+					break;
+				}
+			}
+			//then show if the selected something is selected then its valid
+				if(valid){
+				alert("Validation Successful");
+				}
+				else{ //if something isn't selected alert the user
+				alert("Please Select a Chess Master");
+				return false;
+			}
+
+		}
+				
+			
+			function validEmail(){
+				//get input from user,  save to var
+				var input = document.getElementById("emailData").value;
+				//check for the @ symbol
+				//using indexof() - this will return a number of where the @ is in the string
+				var symbol = input.indexOf('@');
+				//get index of the . and if >0 that means its present
+				
+				//if not there give feedback
+				if(symbol < 1){
+					document.getElementById("emailFeedback").innerHTML = "Not Valid";
+				}else{
+					//if it is there then capitalize the email & show user
+					document.getElementById("emailFeedback").innerHTML = input.toUpperCase();
+				}
+			}	
+		</script>
+		<!--script for the game-->
+		<script>
+		
+			function game(){
+				//set up variables 
+				var userInput;
+				var msge;
+				var winnerScores = [0,0];//index 1 = comp, index 2 = user
+				//set up random numbers - userInput
+				
+				//play the game 4 times using for loop
+				for(i = 1; i < 5; i++){
+					var computerInput = Math.floor(
+					Math.random()*4)+1;
+					//get user input
+					userInput = parseInt(prompt("Enter 1 for pawn, Enter 2 for rook, Enter 3 for Queen, Enter 4 for King", "1,2,3,4"));
+					//compare the inputs
+					if(computerInput === 1){
+						
+						if(userInput === 1){
+							msge="Draw";
+						}else if(userInput === 2){
+							msge="Rook beats Pawn, You Won";
+							//update user score
+							winnerScores[1]++;
+						}else if(userInput === 3){
+							msge="Queen beats Pawn, Win";
+							//update user score
+							winnerScores[1]++;
+						}else if(userInput === 4){
+							msge="King beats Pawn, You Win";
+							//update user score
+							winnerScores[1]++;
+						}
+					}else if(computerInput === 2){				
+							
+							if(userInput === 1){
+							msge="Rook beats Pawn, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 2){
+							msge="Draw";
+						}else if(userInput === 3){
+							msge="Queen beats Rook, You Win";
+							//update user score
+							winnerScores[1]++;
+						}else if(userInput === 4){
+							msge="King beats Rook, You win"
+							//update user score
+							winnerScores[1]++;
+						}
+					}else if(computerInput === 3){
+					
+						if(userInput === 1){
+							msge="Queen beats Pawn, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 2){
+							msge="Queen beats Rook, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 3){
+							msge="Draw";
+						}else if(userInput === 4){
+							msge="King beats Queen, You win"
+							//update user score
+							winnerScores[1]++;
+						}
+					}else if(computerInput === 4){
+						
+						if(userInput === 1){
+							msge="King beats Pawn, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 2){
+							msge="King beats Rook, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 3){
+							msge="King beats Queen, You Lose";
+							//update computer score
+							winnerScores[0]++;
+						}else if(userInput === 4){
+							msge="Draw";
+						}
+					}
+					// user feedback
+					//document.getElementById("userInfo").innerHTML = msge;
+					alert(msge);
+				}// end of loop
+				// give the scores
+				document.getElementById("userInfo").innerHTML = "<br/>User Score: " +winnerScores[1]+ "<br/> Computer score: " +winnerScores[0];
+				
+			}//end function
+			
+		</script>
+		
+	</head>
+	<body>
+	<!--coded by Adam Marik-->
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+			<div class="head">
+				<h1 class="header">Balbriggan Chess Club History</h1>
+			</div>
+			</div>
+			
+			<div class="sidebar"> 
+				
+				<!--my nav links-->
+				<div class="w3-container">
+				<div class="w3-bar w3-blue">
+					<i class="fas fa-bars"></i>
+					<a href="../index.html" class="w3-bar-item w3-button w3-mobile">Main</a>
+					<a href="../facts/index.html" class="w3-bar-item w3-button w3-mobile">Facts</a>
+					<a href="../history/index.html" class="w3-bar-item w3-button w3-mobile">History</a>
+				</div>
+				</div>
+			</div>
+			<div class="main">
+				<!--img and text,background image-->
+				
+				<script type="text/javascript">
+				
+				function changeText(value){
+					var div = document.getElementById("div");
+					var div_1= document.getElementById("div_1");
+					var text = "";
+
+					
+					if (value == 1) {text += "Our history all began here, We loved The Queen's Gambit as it performed a very good and accurate simulation of the chess tactics and strategy it takes. We then set up a new club in Balbriggan to welcome all the new talent within our community and teach them a bit about chess and battle against eachother.";
+					
+					div.innerHTML = text;}
+					
+					if (value == 2) {text += "Our founding members of the club, Clinton Ojo, Bryan Aneneh and Adam Marik, started playing on chess.com and they gained a better coherent understanding of chess and all the aspects or it, they competed in many tournaments at beginner, amature and intermediate leagues.  ";
+					
+					div_1.innerHTML = text;}
+				}
+			
+				</script>
+				
+				<br>
+				
+				<!--Clickable Images-->
+				<div class="row">
+						
+						<!--link the javascript and execute the text onclick-->
+						<a href="javascript: changeText(1);">
+						<img src="../images/Chessboard.jpg" alt="chessboard" />
+						</a>
+						
+						<div id="div"></div>
+						<br/>
+						<!--link the javascript and execute the text onclick-->
+						<a href="javascript: changeText(2);">
+						<img class="img_1" src="../images/Chess.com.png" alt="chessboard" />
+						</a>
+					
+						<div id="div_1"></div>
+						
+					</div>
+				
+				
+				<br/>
+				
+				<!--button to hide the text and manipulate the DOM-->
+				<button type="button" onclick="HideValues();">Hide Text</button>
+				
+				<br/>
+				<br>
+				
+				<div class="container mt-5">
+				<div class="row">
+				<div class="col-sm-4">
+				
+				<!--form to submit with a validator in javascript-->
+				<form>
+					<p>Enter your name &amp; email</p>
+					<label>Enter your name:</label>
+					<br/>
+					<!--id detects in javascript and executes the task-->
+					<input type="text" value="enter name" id="nameData">
+					<!--then displays the feedback if the user doesn't enter the values properly-->
+					<p id="feedback"></p>
+					
+					<label>Enter your Email:</label>
+					<br/>
+					<!--id detects in javascript and executes the task-->
+					<input type="text" value="enter email" id="emailData">
+					<!--then displays the feedback if the user doesn't enter the values properly-->
+					<p id="emailFeedback"></p>
+					
+					<!--button input to start the validate function-->
+					<input type="button" value="Submit" onclick="validate()">
+					
+				</form>
+				
+				</div>
+				
+				<br/>
+				
+				<div class="col-sm-4">
+				
+				<p>Play a fun game</p>
+				
+				<input type="button" value="play" onclick="game()">
+				<div class="scoreboard">
+				<div id="userInfo"></div>
+				</div>
+				
+				</div>
+				
+				<br/>
+				
+				<div class="col-sm-4">
+				
+				<p>Who is your favorite chess master</p>
+				<form name="myform" onsubmit="return validateInput()">
+					<input type="radio" name="chessMaster" value="Magnus Carlsen">
+					<label>Magnus Carlsen</label><br/>
+					<input type="radio" name="chessMaster" value="Garry Kasparov">
+					<label>Garry Kasparov</label><br/>
+					<input type="radio" name="chessMaster" value="Fabiano Caruana">
+					<label>Fabiano Caruana</label><br/>
+					<input type="radio" name="chessMaster" value="Bobby Fischer">
+					<label>Bobby Fischer</label><br/>
+					<input type="radio" name="chessMaster" value="Jose Raul Capablanca">
+					<label>Jose Raul Capablanca</label><br/>
+				
+					<input type="submit" value="submit"/>
+				</form>
+				
+				</div>
+				
+				</div>
+			</div>
+			<br/>
+			<p> Copyright &copy; by Adam Marik</p>
+	</div>
+	<script>
+	//function sets the text to hidden
+	function HideValues() {
+		document.getElementById("div").style.visibility = 'hidden';
+		document.getElementById("div_1").style.visibility = 'hidden';
+   
+}
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	</body>
+</html>

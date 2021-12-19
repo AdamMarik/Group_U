@@ -1,0 +1,172 @@
+/*Coded by Adam Marik*/
+img{
+	width:400px;
+	height:200px;
+}
+
+#userInfo{
+	color:red;
+}
+
+.img_1{
+	float:right;
+}
+
+#div{
+	padding-left:40px;
+	padding-right:10px;
+	padding-top:10px;
+	position:relative;
+	font-size:16px;
+	color:white;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#div_1{
+	padding-left:40px;
+	padding-right:10px;
+	padding-top:10px;
+	position:relative;
+	font-size:16px;
+	color:white;
+	font-family: 'M PLUS Code Latin', sans-serif;
+}
+
+.main{
+	background-image:url("../images/fancyboard.jpg");
+	background-size:cover;
+	
+}
+
+label{
+	position:relative;
+	font-size:16px;
+	color:white;
+}
+
+p{
+	color:white;
+}
+
+.head{
+	background-image:url("../images/Logo.png");
+	background-repeat:no-repeat;
+	background-size:150px;
+}
+/*coded by Adam Marik*/
+
+
+/*coded by Byran Aneneh*/
+.img_b{
+    height: 450px;
+    width: 450px;
+    margin: 5px;
+}
+
+.button_b{
+    margin-left: 22.5%;
+}
+
+#wrapper_b{
+    height:600px; 
+    width: 1450px;
+} 
+
+.h1_b{ 
+    text-align: center; 
+    background-color: #cc5434; 
+    height: 50px;
+    margin-top: 20px;
+} 
+
+.head_b{ 
+    height: 50px; 
+    width:90%; 
+    background-color: #cc8800; 
+} 
+
+
+
+.sidebar_b{ 
+    width: 10%; 
+    float: left; 
+    background-color: #cc8800; 
+    height:100%; 
+} 
+
+.main_b{
+    width: 90%;
+    height: 100%;
+    background-image: url("../images/Fancyboard.jpg");
+    background-size: cover;
+}
+/*coded by Byran Aneneh*/
+
+/*coded by clinton*/
+
+
+#Clinton{
+	background-image: url(../images/Fancyboard.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+#Clinton2{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+#Clinton3{
+	text-align:center;
+	color:#0d0d0d;
+	font-family: 'Shippori Antique B1', sans-serif;
+	font-size:20px;
+	color:#F0FFFF;
+	padding-right:100px;
+}
+
+#clinton4{
+font-family: 'Shippori Antique B1', sans-serif;
+	font-size:30x;
+	color:#F0FFFF;
+	padding-top:50px
+}
+
+#Clinton5{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:30px;
+}
+
+.clinton7{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:35px;
+	color:#F0FFFF
+}
+/*coded by clinton*/
